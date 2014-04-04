@@ -43,4 +43,10 @@ describe TasksRepository do
                               {:id => 1, :name => "Do more stuff"}
                             ]
   end
+  it 'allows a task to be deleted' do
+  @repo.create({:name => "Do some stuff"})
+  @repo.create({:name => "Do some other stuff"})
+  @repo.delete(1)
+  expect(@repo.all).to eq [{:id => 2, :name => 'Do some other stuff'}]
+  end
 end

@@ -20,4 +20,8 @@ class TasksRepository
   def update(id, attribute)
     @tasks_table.where(:id => id).update(attribute)
   end
+
+  def delete(id)
+    @tasks_table.where(:id => id).delete
+  end
 end
