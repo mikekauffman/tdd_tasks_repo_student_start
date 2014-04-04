@@ -32,4 +32,15 @@ describe TasksRepository do
     @repo.create({:name => "Do some other stuff"})
     expect(@repo.find(2)).to eq ({:id => 2, :name => 'Do some other stuff'})
   end
+
+  it 'allows for updated a specific task' do
+    @repo.create({:name => "Do some stuff"})
+    @repo.create({:name => "Do some other stuff"})
+    @repo.update(1, {:name => 'Do more stuff'})
+    expect(@repo.find(1)).to eq ({:id => 1, :name => 'Do more stuff'})
+    expect(@repo.all).to eq [
+                              {:id => 2, :name => "Do some other stuff"},
+                              {:id => 1, :name => "Do more stuff"}
+                            ]
+  end
 end

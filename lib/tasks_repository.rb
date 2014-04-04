@@ -16,4 +16,8 @@ class TasksRepository
   def find(id)
     @tasks_table.where(:id => id).to_a[0]
   end
+
+  def update(id, attribute)
+    @tasks_table.where(:id => id).update(attribute)
+  end
 end
