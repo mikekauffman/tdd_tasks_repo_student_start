@@ -13,15 +13,19 @@ class TasksRepository
     @tasks_table.to_a
   end
 
+  def filter_by_id(id)
+    @tasks_table.where(:id => id)
+  end
+
   def find(id)
-    @tasks_table.where(:id => id).to_a[0]
+    filter_by_id(id).to_a[0]
   end
 
   def update(id, attribute)
-    @tasks_table.where(:id => id).update(attribute)
+    filter_by_id(id).update(attribute)
   end
 
   def delete(id)
-    @tasks_table.where(:id => id).delete
+    filter_by_id(id).delete
   end
 end
